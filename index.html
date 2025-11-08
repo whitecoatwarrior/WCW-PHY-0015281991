@@ -1,0 +1,2619 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHITE COAT WARRIORS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* All CSS styles remain the same as in the original file */
+        :root {
+            --primary-blue: #1a56db;
+            --secondary-blue: #0ea5e9;
+            --dark-blue: #1e3a8a;
+            --light-blue: #dbeafe;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-teal: #14b8a6;
+            --accent-yellow: #fbbf24;
+            --accent-amber: #f59e0b;
+            --vibrant-blue: #3b82f6;
+            --vibrant-green: #22c55e;
+            --vibrant-purple: #a855f7;
+            --vibrant-pink: #e879f9;
+            --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            --gradient-green: linear-gradient(135deg, var(--accent-green), #34d399);
+            --gradient-orange: linear-gradient(135deg, var(--accent-orange), #f97316);
+            --gradient-red: linear-gradient(135deg, var(--accent-red), #f87171);
+            --gradient-purple: linear-gradient(135deg, var(--accent-purple), #a78bfa);
+            --gradient-pink: linear-gradient(135deg, var(--accent-pink), #f472b6);
+            --gradient-teal: linear-gradient(135deg, var(--accent-teal), #2dd4bf);
+            --gradient-yellow: linear-gradient(135deg, var(--accent-yellow), #f59e0b);
+            --gradient-vibrant: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+            --shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 2px 5px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 5px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 6px;
+            color: #1e3a8a;
+            font-size: 8.25px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 9px;
+        }
+
+        .logo h1 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5px;
+            background: var(--gradient-vibrant);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo p {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.525rem;
+        }
+
+        .page {
+            background: white;
+            border-radius: 9px;
+            padding: 9px;
+            box-shadow: var(--shadow-xl);
+            width: 100%;
+            display: none;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(10px);
+        }
+
+        .active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .promo-banner {
+            background: var(--gradient-vibrant);
+            color: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            margin-bottom: 11.25px;
+            text-align: center;
+            font-size: 0.45rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+
+        .promo-banner h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-banner p {
+            line-height: 1.4;
+            text-align: justify;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group {
+            margin-bottom: 6px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 1.5px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            font-size: 0.525rem;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 4.5px 6.75px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            font-size: 0.525rem;
+            background: #f8fafc;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(26, 86, 219, 0.15);
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .password-container .form-input {
+            padding-right: 22.5px;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 7.5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-blue);
+            font-size: 0.525rem;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4.5px 7.5px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            gap: 3px;
+            width: 100%;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(26, 86, 219, 0.2);
+        }
+
+        .btn-contact {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-purple {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
+        }
+
+        .btn-red {
+            background: var(--gradient-red);
+            color: white;
+        }
+
+        .btn-red:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+        }
+
+        .btn-orange {
+            background: var(--gradient-orange);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+        }
+
+        .error-box {
+            background: #fee2e2;
+            color: var(--accent-red);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-red);
+        }
+
+        .success-box {
+            background: #d1fae5;
+            color: var(--accent-green);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-green);
+        }
+
+        .notification-box {
+            background: #fef3c7;
+            color: #d97706;
+            padding: 7.5px;
+            border-radius: 4.5px;
+            margin-top: 7.5px;
+            font-weight: 600;
+            font-size: 0.525rem;
+            text-align: center;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .quiz-notification {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            box-shadow: var(--shadow-xl);
+            z-index: 1000;
+            display: none;
+            max-width: 225px;
+            border-left: 3.75px solid var(--accent-green);
+            animation: slideInRight 0.3s ease;
+            transform: translateX(100%);
+        }
+
+        .quiz-notification.show {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .quiz-notification.warning {
+            border-left-color: var(--accent-orange);
+        }
+
+        .quiz-notification.error {
+            border-left-color: var(--accent-red);
+        }
+
+        .quiz-notification-content {
+            display: flex;
+            flex-direction: column;
+            gap: 7.5px;
+        }
+
+        .quiz-notification-title {
+            font-weight: 700;
+            font-size: 0.6rem;
+            color: var(--dark-blue);
+        }
+
+        .quiz-notification-message {
+            font-size: 0.525rem;
+            color: #4b5563;
+        }
+
+        .quiz-notification-actions {
+            display: flex;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+
+        .quiz-notification-btn {
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.4875rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .quiz-notification-btn.primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .quiz-notification-btn.secondary {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .main-page-buttons {
+            display: grid;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-access-section {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            padding-bottom: 4.5px;
+            border-bottom: 1.5px solid var(--light-blue);
+        }
+
+        .quiz-title-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.25px;
+            width: 80%;
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 0.525rem;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        .timer-container {
+            display: flex;
+            gap: 4.5px;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .timer, .question-timer {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 2.25px 4.5px;
+            border-radius: 7.5px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            box-shadow: var(--shadow);
+            white-space: nowrap;
+        }
+
+        .timer.total-timer {
+            background: var(--gradient-orange);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 4.5px;
+            background: #e5e7eb;
+            border-radius: 2.25px;
+            overflow: hidden;
+            margin-bottom: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 2.25px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        .question-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(10.5px, 1fr));
+            gap: 2.25px;
+            margin-bottom: 6px;
+        }
+
+        .question-nav-item {
+            width: 10.5px;
+            height: 10.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2.25px;
+            font-weight: 700;
+            font-size: 0.375rem;
+            cursor: pointer;
+            background: white;
+            border: 1.5px solid var(--light-blue);
+            transition: all 0.2s;
+        }
+
+        .question-nav-item.current {
+            background: var(--gradient-vibrant);
+            color: white;
+            border-color: var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        .question-nav-item.solved {
+            background: var(--gradient-green);
+            color: white;
+            border-color: var(--accent-green);
+        }
+
+        .question-nav-item.visited {
+            background: var(--gradient-orange);
+            color: white;
+            border-color: var(--accent-orange);
+        }
+
+        .question-container {
+            margin-bottom: 6px;
+        }
+
+        .question-text {
+            font-size: 0.5625rem;
+            font-weight: 700;
+            margin-bottom: 4.5px;
+            color: var(--dark-blue);
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3px;
+            margin-bottom: 6px;
+        }
+
+        .option {
+            padding: 3.75px 6px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            background: #f8fafc;
+            font-size: 0.525rem;
+            position: relative;
+        }
+
+        .option:hover {
+            border-color: var(--primary-blue);
+            background: #e0f2fe;
+            transform: translateY(-1px);
+        }
+
+        .option.selected {
+            border-color: var(--primary-blue);
+            background: #dbeafe;
+        }
+
+        .option.correct {
+            border-color: var(--accent-green);
+            background: #d1fae5;
+        }
+
+        .option.incorrect {
+            border-color: var(--accent-red);
+            background: #fee2e2;
+        }
+
+        .option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .reasoning {
+            background: #f8fafc;
+            border-radius: 3.75px;
+            padding: 6px;
+            margin-top: 6px;
+            display: none;
+            border-left: 2.25px solid var(--primary-blue);
+            font-size: 0.525rem;
+        }
+
+        .reasoning-title {
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: var(--dark-blue);
+            font-size: 0.5625rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 9px;
+        }
+
+        .nav-btn {
+            padding: 3.75px 5.25px;
+            border-radius: 3.75px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            font-size: 0.525rem;
+            display: flex;
+            align-items: center;
+            gap: 2.25px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: white;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            color: white;
+        }
+
+        .btn-reasoning {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-reasoning.disabled {
+            background: #dc3545;
+            color: white;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .btn-reasoning.disabled:hover {
+            background: #dc3545;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-submit {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .results-header-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3.75px;
+            margin-bottom: 9px;
+        }
+
+        .results-header-buttons .btn {
+            padding: 3px 4.5px;
+            font-size: 0.4875rem;
+            width: 100%;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+            border-radius: 6px;
+            padding: 9px;
+            text-align: center;
+            margin-bottom: 9px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-vibrant);
+        }
+
+        .result-card h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: var(--dark-blue);
+        }
+
+        .result-card table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.525rem;
+            margin-top: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .result-card th, .result-card td {
+            padding: 3.75px;
+            border: 1px solid #dbeafe;
+            text-align: left;
+        }
+
+        .result-card th {
+            background-color: var(--light-blue);
+            font-weight: 600;
+        }
+
+        .result-card td {
+            background-color: #f8fafc;
+        }
+
+        .result-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 4.5px;
+            margin-top: 9px;
+        }
+
+        .all-mcqs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 11.25px;
+        }
+
+        .all-mcq-item {
+            padding: 7.5px;
+            border: 1px solid var(--light-blue);
+            border-radius: 6px;
+            background: #f8fafc;
+            position: relative;
+        }
+
+        .all-mcq-item .question-text {
+            color: var(--dark-blue);
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+
+        .all-mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 4.5px;
+        }
+
+        .all-mcq-option {
+            font-size: 0.525rem;
+            padding: 3px 4.5px;
+            border-radius: 3px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .all-mcq-option.correct {
+            background: #d1fae5;
+            color: var(--accent-green);
+            font-weight: 600;
+            border-color: #a7f3d0;
+        }
+
+        .all-mcq-reasoning {
+            margin-top: 6px;
+            font-size: 0.525rem;
+            color: #4b5563;
+            padding: 6px;
+            background: #f8fafc;
+            border-radius: 3px;
+            border-left: 2.25px solid var(--primary-blue);
+        }
+
+        .all-mcq-reasoning strong {
+            color: var(--dark-blue);
+        }
+
+        .quick-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 9px;
+            gap: 6px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: white;
+            border-radius: 4.5px;
+            padding: 6px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 2px solid var(--primary-blue);
+        }
+
+        .stat-card.correct {
+            border-top-color: var(--accent-green);
+        }
+
+        .stat-card.incorrect {
+            border-top-color: var(--accent-red);
+        }
+
+        .stat-card.unanswered {
+            border-top-color: var(--accent-orange);
+        }
+
+        .stat-value {
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 1.5px;
+        }
+
+        .stat-label {
+            font-size: 0.4875rem;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .performance-meter {
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 6px 0;
+        }
+
+        .performance-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        @media (max-width: 768px) {
+            .quiz-header {
+                flex-direction: column;
+                gap: 4.5px;
+                align-items: flex-start;
+            }
+            
+            .navigation-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer-container {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-top: 3.75px;
+                justify-content: flex-end;
+                width: 100%;
+            }
+            
+            .quiz-title-container {
+                width: 100%;
+            }
+            
+            .result-actions {
+                flex-direction: column;
+            }
+            
+            .promo-banner {
+                padding: 9px;
+            }
+            
+            .promo-banner h2 {
+                font-size: 0.6rem;
+            }
+            
+            .promo-banner p {
+                font-size: 0.4125rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-notification" id="quiz-notification">
+        <div class="quiz-notification-content">
+            <div class="quiz-notification-title" id="notification-title">Quiz Progress Found</div>
+            <div class="quiz-notification-message" id="notification-message">You have an unfinished quiz. Do you want to continue where you left off?</div>
+            <div class="quiz-notification-actions">
+                <button class="quiz-notification-btn secondary" id="notification-no">Start Fresh</button>
+                <button class="quiz-notification-btn primary" id="notification-yes">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <h1>WHITE COAT WARRIORS</h1>
+            <p>Excellence in Educational Assessment</p>
+        </div>
+
+        <div id="signin-page" class="page active">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-lock"></i> Access Test</h2>
+            <p>Sign in or use your access code</p>
+            
+            <div class="main-page-buttons">
+                <button class="btn btn-primary" onclick="showQuizAccessForm()">
+                    <i class="fas fa-key"></i>
+                    <span>Sign In with Quiz Access Code</span>
+                </button>
+                <button class="btn btn-primary" onclick="showRegistrationPage()">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Sign Up to Get Quiz Access</span>
+                </button>
+                <button class="btn btn-purple" onclick="showDeveloperAccessForm()">
+                    <i class="fas fa-code"></i>
+                    <span>Developer Access</span>
+                </button>
+            </div>
+            
+            <div id="developer-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-user-secret"></i> Developer Login</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="developerPassword" class="form-input" placeholder="Enter the Developer Password">
+                    <i class="fas fa-eye-slash input-icon" id="toggleDeveloperPassword"></i>
+                </div>
+                <button class="btn btn-purple" onclick="checkDeveloperPassword()">
+                    <span>Log In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="dev-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid developer password.
+                </div>
+            </div>
+            
+            <div id="quiz-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-key"></i> Enter Quiz Access Code</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="quizAccessCode" class="form-input" placeholder="Enter your 12-Digit Quiz Access Code here">
+                    <i class="fas fa-eye-slash input-icon" id="toggleQuizAccessCode"></i>
+                </div>
+                <button class="btn btn-primary" onclick="accessQuiz(document.getElementById('quizAccessCode').value)">
+                    <span>Access Quiz</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="quiz-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid quiz access code.
+                </div>
+            </div>
+            
+        </div>
+
+        <div id="registration-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-user-edit"></i> Student Registration</h2>
+            <p>Please provide your details to register</p>
+            
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user"></i> Student Name</label>
+                <input type="text" id="studentName" class="form-input" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user-friends"></i> Father Name</label>
+                <input type="text" id="fatherName" class="form-input" placeholder="Enter your father's name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" class="form-input" placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-phone"></i> Mobile Number (WhatsApp)</label>
+                <input type="tel" id="mobile" class="form-input" placeholder="+92XXXXXXXXXX">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-city"></i> City / District</label>
+                <input type="text" id="city" class="form-input" placeholder="Enter your city/district">
+            </div>
+            <button class="btn btn-primary" onclick="handleRegistration()">
+                <span>Submit to Get Access to Quiz</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-red" style="margin-top: 3.75px;" onclick="showPage('signin-page')">
+                <i class="fas fa-chevron-left"></i> Back to Home
+            </button>
+        </div>
+
+        <div id="quiz-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+
+            <div class="quiz-header">
+                <div class="quiz-title-container">
+                    <h2 id="quiz-title"></h2>
+                    <div class="quiz-info">
+                        <span><i class="fas fa-book"></i> Subject: <span id="quiz-subject">English Grammar</span></span>
+                        <span><i class="fas fa-clock"></i> Per MCQ: <span id="per-mcq-time">1</span> Minute</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timer-container">
+                <div class="timer" id="question-timer">60</div>
+                <div class="timer total-timer" id="timer">40:00</div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="quiz-progress"></div>
+            </div>
+
+            <div class="question-nav" id="question-nav"></div>
+            
+            <div class="question-container">
+                <div class="question-text" id="question-text"></div>
+                <div class="options-container" id="options-container"></div>
+                <div class="reasoning" id="reasoning">
+                    <div class="reasoning-title"><i class="fas fa-lightbulb"></i> Explanation:</div>
+                    <div id="reasoning-text"></div>
+                </div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="nav-btn btn-back" onclick="navigateQuestion('prev')">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button class="nav-btn btn-next" onclick="navigateQuestion('next')">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="nav-btn btn-reasoning disabled" id="reasoning-btn" onclick="toggleReasoning()">
+                    <i class="fas fa-lightbulb"></i> Reasoning
+                </button>
+                <button class="nav-btn btn-submit" onclick="submitTest()">
+                    Submit <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="results-page" class="page">
+            <div class="results-header-buttons">
+                <a id="website-link" href="#" target="_blank" class="btn btn-primary"><i class="fas fa-globe"></i> Website</a>
+                <a id="whatsapp-contact-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Whatsapp Contact</a>
+                <a id="whatsapp-community-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fas fa-users"></i> Whatsapp Community</a>
+            </div>
+            
+            <div class="quick-stats">
+                <div class="stat-card correct">
+                    <div class="stat-value" id="correct-count">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-card incorrect">
+                    <div class="stat-value" id="incorrect-count">0</div>
+                    <div class="stat-label">Incorrect</div>
+                </div>
+                <div class="stat-card unanswered">
+                    <div class="stat-value" id="unanswered-count">0</div>
+                    <div class="stat-label">Unanswered</div>
+                </div>
+            </div>
+            
+            <div class="performance-meter">
+                <div class="performance-fill" id="performance-fill"></div>
+            </div>
+            
+            <div class="result-card">
+                <h2><i class="fas fa-user-graduate"></i> Student Information</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-info-table"></tbody>
+                </table>
+            </div>
+
+            <div class="result-card">
+                <h2><i class="fas fa-chart-bar"></i> Test Results</h2>
+                <table>
+                    <tbody id="quiz-results-table"></tbody>
+                </table>
+            </div>
+            
+            <div class="result-actions">
+                <button class="btn btn-primary" onclick="restartTest()">
+                    <i class="fas fa-redo"></i> Retake Full Test
+                </button>
+                <button class="btn btn-primary" onclick="retakeIncorrect()">
+                    <i class="fas fa-bolt"></i> Retake Incorrect Questions
+                </button>
+                <button class="btn btn-primary" onclick="viewAllMcqs()">
+                    <i class="fas fa-clipboard-list"></i> View All MCQs
+                </button>
+            </div>
+        </div>
+
+        <div id="all-mcqs-page" class="page">
+            <h2><i class="fas fa-list-alt"></i> All MCQs and Solutions</h2>
+            <div class="all-mcqs-list" id="all-mcqs-list"></div>
+            <button class="btn btn-primary" onclick="showPage('results-page')">
+                <i class="fas fa-arrow-left"></i> Back to Results
+            </button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html><script>// ***************************************************************
+// !! IMPORTANT: GOOGLE APPS SCRIPT URL FOR DATA LOGGING !!
+const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxH08_vQhw7nqJCy3igwm70zXI2Mwau8CvcIeXdZMF2dFm9bPfgWtP6En4GQZGKte7c/exec';
+// ***************************************************************
+
+// Quiz Data
+const quizData_WCW_BIO_0014 = [
+    {
+        question: "An organism's metabolic strategy involves the complete oxidative breakdown of a primary glucose molecule, releasing a significant quantity of ATP. This intricate series of reactions necessitates the consistent availability of an atmospheric gas, indicating a process fundamentally characterized by:",
+        options: [
+            "Anaerobic fermentation",
+            "Partial glucose oxidation",
+            "Oxygen-dependent catabolism",
+            "Cytosolic energy capture"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that aerobic respiration, which completely breaks down glucose for a large ATP yield, occurs in the presence of abundant atmospheric oxygen, thus being oxygen-dependent catabolism."
+    },
+    {
+        question: "In the absence of a terminal electron acceptor external to the organic substrate, a cell may resort to an alternative catabolic route. This pathway, characterized by incomplete glucose breakdown and minimal ATP yield, primarily serves to regenerate a key coenzyme crucial for the initial stages of glucose metabolism. This describes:",
+        options: [
+            "Oxidative phosphorylation",
+            "Substrate-level phosphorylation",
+            "Anaerobic fermentation",
+            "Citric acid cycle"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that anaerobic respiration (fermentation) is an incomplete breakdown of glucose in the absence of oxygen, yielding only 2 ATP, and its primary purpose is to regenerate NAD+ from NADH so glycolysis can continue."
+    },
+    {
+        question: "A multicellular organism, facing extreme energetic demands under conditions of limited oxygen supply, begins to accumulate a three-carbon organic acid in its muscle tissue. This compound is a direct product of the reduction of an intermediate molecule formed during glycolysis. The pathway responsible for its production is:",
+        options: [
+            "Alcoholic fermentation",
+            "Pyruvate oxidation",
+            "Lactic acid fermentation",
+            "Krebs cycle"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that during strenuous exercise, muscle cells undergo lactic acid fermentation, where pyruvate is reduced by NADH to form lactic acid (a three-carbon organic acid)."
+    },
+    {
+        question: "A particular fatty acid, possessing an eighteen-carbon chain, undergoes a specialized catabolic process. The end products of this process are then directly funneled into a central metabolic cycle, contributing significantly to energy generation. How many units of the two-carbon molecule, which serves as the entry point into this cycle, would be generated from this specific fatty acid?",
+        options: [
+            "Three",
+            "Six",
+            "Nine",
+            "Twelve"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that an 18-carbon fatty acid yields nine acetyl-CoA molecules, which is the 2-carbon entry point into the Krebs cycle."
+    },
+    {
+        question: "Upon the deamination of an amino acid in the liver, its residual carbon skeleton is prepared for energetic utilization. Depending on the size and structure of this remaining carbon chain, it can be oxidized at different points within the overall cellular respiration pathway. Where would such a carbon chain *not* directly enter for oxidation?",
+        options: [
+            "Glycolysis",
+            "Urea cycle",
+            "Krebs cycle",
+            "Both glycolysis and Krebs cycle are potential entry points"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory that after deamination, the amino group enters the urea cycle, but the carbon chain itself is oxidized in either glycolysis or the Krebs cycle, depending on its R-group size. The urea cycle is for ammonia disposal, not carbon chain oxidation."
+    },
+    {
+        question: "The initial, universal stage of glucose catabolism occurs within the cell's main fluid compartment. This process, also known by the acronym EMP pathway, is characterized by both an energy-investment phase and an energy-payoff phase. Which of the following is an incorrect statement regarding its outputs per glucose molecule, prior to any subsequent mitochondrial processing?",
+        options: [
+            "Net production of two ATP molecules",
+            "Formation of two NADH molecules",
+            "Generation of two pyruvate molecules",
+            "Consumption of two NADH molecules"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mention in Textbook theory that glycolysis (EMP pathway) outputs per glucose are 2 pyruvate, 2 net ATP (4 produced, 2 consumed), and 2 NADH. It does not consume NADH, but produces it."
+    },
+    {
+        question: "Considering the preparatory phase of glycolysis, a hexose sugar undergoes a series of transformations. One key step involves its conversion into an isomer with a modified ring structure, which then allows for a second phosphorylation event. This specific isomerization step precedes the splitting of the six-carbon molecule. The molecule undergoing this isomerization is:",
+        options: [
+            "Glucose",
+            "Glucose-6-phosphate",
+            "Fructose-6-phosphate",
+            "Fructose-1,6-bisphosphate"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory that in the preparatory phase of glycolysis, after glucose is phosphorylated to Glucose-6-phosphate, it then undergoes isomerization to Fructose-6-phosphate before the second phosphorylation to Fructose-1,6-bisphosphate."
+    },
+    {
+        question: "During the payoff phase of glycolysis, two instances of ATP generation occur through direct enzymatic transfer of a phosphate group from a substrate. The final such event involves a high-energy three-carbon compound directly yielding pyruvate. The name of the high-energy substrate molecule from which the phosphate is transferred in this specific step is:",
+        options: [
+            "1,3-bisphosphoglycerate",
+            "2-phosphoglycerate",
+            "Phosphoenol pyruvate",
+            "Glyceraldehyde 3-phosphate"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that in the payoff phase, ATP is formed when Phosphoenol pyruvate (PEP) is converted to Pyruvate via substrate-level phosphorylation."
+    },
+    {
+        question: "Following glycolysis, the three-carbon pyruvate molecules must traverse a specific cellular barrier to enter the next metabolic stage under aerobic conditions. This intermediate phase, which connects glycolysis to the Krebs cycle, involves several key transformations. Which of the following is *not* a direct outcome for each pyruvate molecule undergoing this transition?",
+        options: [
+            "Formation of a 2-carbon acetyl group",
+            "Generation of CO2",
+            "Reduction of NAD+ to NADH",
+            "Direct production of ATP via substrate-level phosphorylation"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mention in Textbook theory that pyruvate oxidation (link reaction) involves decarboxylation (CO2 removal), oxidation (NADH production), and formation of Acetyl-CoA (2-carbon fragment). There is no direct ATP production in this step."
+    },
+    {
+        question: "In the mitochondrial matrix, a central cyclic pathway processes two-carbon units derived from glucose breakdown. This cycle begins with the condensation of a two-carbon molecule with a four-carbon acceptor, regenerating the acceptor at the end. The initial six-carbon product formed is unique due to its specific functional groups. This compound is known as:",
+        options: [
+            "Pyruvate",
+            "Oxaloacetate",
+            "Citrate",
+            "Alpha-ketoglutarate"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that the Krebs cycle (Citric Acid Cycle) begins with Acetyl-CoA (2C) combining with Oxaloacetate (4C) to form Citrate (6C), which has three carboxylic acid groups."
+    },
+    {
+        question: "During a single turn of the Krebs cycle, corresponding to the processing of one acetyl-CoA molecule, significant electron carriers are generated. These carriers will later contribute electrons to the electron transport chain, driving the majority of ATP synthesis. What is the total number of NADH and FADH2 molecules produced per acetyl-CoA in this cycle?",
+        options: [
+            "2 NADH, 1 FADH2",
+            "3 NADH, 1 FADH2",
+            "4 NADH, 2 FADH2",
+            "6 NADH, 2 FADH2"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory that per acetyl-CoA, the Krebs cycle produces 3 NADH and 1 FADH2 (along with 2 CO2 and 1 ATP/GTP)."
+    },
+    {
+        question: "A crucial mobile electron carrier, specifically a lipid-soluble, non-protein component, operates within the inner mitochondrial membrane. It accepts electrons from both Complex I and Complex II of the electron transport chain, facilitating their transfer to subsequent complexes. This component is identified as:",
+        options: [
+            "Cytochrome c",
+            "NADH-dehydrogenase",
+            "Coenzyme Q",
+            "ATP synthetase"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that Coenzyme Q (Ubiquinone) is a mobile, lipid-soluble, non-protein component of the ETC that accepts electrons from Complex I and II."
+    },
+    {
+        question: "The primary driving force behind oxidative phosphorylation is the movement of specific ions across the inner mitochondrial membrane. This electrochemical gradient is established by the energy released from electron flow through the ETC complexes, which actively translocates these ions from the matrix to the intermembrane space. These ions are:",
+        options: [
+            "Sodium ions",
+            "Potassium ions",
+            "Phosphate ions",
+            "Hydrogen ions"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mention in Textbook theory that energy from electron transfer is used to pump protons (H+) from the mitochondrial matrix to the intermembrane space, creating a proton gradient for chemiosmosis."
+    },
+    {
+        question: "Eukaryotic cells exhibit a slightly lower total ATP yield from aerobic respiration compared to prokaryotic cells. This discrepancy primarily arises from a difference in the energetic efficiency of shuttling electrons from a particular glycolytic product into the mitochondrial electron transport chain. Specifically, the NADH generated in which cellular compartment contributes to this lower yield in eukaryotes?",
+        options: [
+            "Mitochondrial matrix",
+            "Inner mitochondrial membrane",
+            "Cytoplasm",
+            "Intermembrane space"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that NADH from glycolysis in the cytoplasm cannot directly enter mitochondria in eukaryotes, and its electrons are transferred to FAD+ inside, yielding FADH2, which results in a lower ATP yield."
+    },
+    {
+        question: "Substrate-level phosphorylation is a direct method of ATP synthesis, distinct from oxidative phosphorylation, where a high-energy phosphate is transferred from an organic substrate to ADP. Considering the entirety of aerobic respiration from a single glucose molecule, how many total ATP molecules are directly formed via this mechanism?",
+        options: [
+            "Two",
+            "Four",
+            "Six",
+            "Eight"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory that substrate-level phosphorylation occurs twice in glycolysis (net 2 ATP) and once in the Krebs cycle (1 ATP per acetyl-CoA, so 2 ATP per glucose). Total = 2 + 2 = 4 ATP."
+    },
+    {
+        question: "In the process of alcoholic fermentation, commonly observed in yeast, the initial glucose breakdown products undergo further transformation. Following decarboxylation, the resulting two-carbon molecule is reduced to yield the final alcoholic product. The intermediate molecule that directly accepts electrons from NADH in this specific reduction step is:",
+        options: [
+            "Pyruvate",
+            "Lactic acid",
+            "Acetaldehyde",
+            "Ethyl alcohol"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that in alcoholic fermentation, pyruvate is decarboxylated to acetaldehyde, which is then reduced by NADH to form ethyl alcohol. Thus, acetaldehyde accepts electrons from NADH."
+    },
+    {
+        question: "A key enzyme complex within the inner mitochondrial membrane facilitates the final step of the electron transport chain, transferring electrons to the ultimate acceptor. This complex is also responsible for pumping protons into the intermembrane space. This specific enzyme complex is known as:",
+        options: [
+            "NADH-dehydrogenase complex",
+            "FADH-dehydrogenase complex",
+            "Cytochrome reductase complex",
+            "Cytochrome oxidase complex"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mention in Textbook theory that Cytochrome oxidase complex (Complex IV) accepts electrons from Cytochrome c and transfers them to oxygen, forming water, and also pumps protons."
+    },
+    {
+        question: "The total theoretical ATP yield in prokaryotes from the complete aerobic respiration of one glucose molecule is higher than in eukaryotes. This difference is solely attributed to the more efficient handling of electron carriers generated in a specific early stage of glucose catabolism. This stage is:",
+        options: [
+            "Pyruvate oxidation",
+            "Krebs cycle",
+            "Glycolysis",
+            "Electron transport chain"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that the difference in ATP yield between prokaryotes (38 ATP) and eukaryotes (36 ATP) is because NADH from glycolysis in the cytoplasm (eukaryotes) yields only 2 ATP each (transferred to FAD+), whereas in prokaryotes, these NADH can directly contribute to 3 ATP each, making the difference related to glycolysis NADH."
+    },
+    {
+        question: "Glycerol, a component derived from lipid breakdown, enters the main glucose catabolic pathway by conversion into a specific intermediate. This intermediate is also produced during the preparatory phase of glycolysis by the splitting of a phosphorylated hexose. The name of this common intermediate is:",
+        options: [
+            "Pyruvate",
+            "Acetyl-CoA",
+            "Glyceraldehyde 3-phosphate",
+            "Fructose-6-phosphate"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that glycerol is converted to Glyceraldehyde 3-phosphate (G3P), which enters glycolysis. G3P is also formed from the splitting of Fructose-1,6-bisphosphate in glycolysis."
+    },
+    {
+        question: "The cyclical regeneration of oxaloacetate is essential for the continuous operation of the Krebs cycle. One specific reaction within this cycle involves the oxidation of a four-carbon dicarboxylic acid, which also results in the production of NADH. This four-carbon dicarboxylic acid that undergoes oxidation to regenerate oxaloacetate is:",
+        options: [
+            "Succinate",
+            "Fumarate",
+            "Malate",
+            "Citrate"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that in the Krebs cycle, Malate is dehydrogenated/oxidized to Oxaloacetate, producing 1 NADH."
+    },
+    {
+        question: "A critical mobile protein, containing iron, acts as an electron shuttle between Complex III (cytochrome reductase) and Complex IV (cytochrome oxidase) within the electron transport chain. Its specific role is vital for the sequential transfer of electrons along the membrane. This protein is named:",
+        options: [
+            "Coenzyme Q",
+            "NADH-dehydrogenase",
+            "Cytochrome c",
+            "ATP synthetase"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that Cytochrome-c is a mobile, protein with iron, that transfers electrons from Coenzyme Q → Complex III → Cytochrome c → Complex IV."
+    },
+    {
+        question: "During the oxidative decarboxylation steps of the Krebs cycle, carbon dioxide molecules are released. Specifically, how many CO2 molecules are generated per single molecule of acetyl-CoA that enters the cycle?",
+        options: [
+            "One",
+            "Two",
+            "Three",
+            "Four"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory that per Acetyl-CoA, the Krebs cycle produces 2 CO2 (from Isocitrate to α-Ketoglutarate and from α-Ketoglutarate to Succinyl-CoA)."
+    },
+    {
+        question: "The process of deamination, a preliminary step in protein catabolism for energy, involves the removal of a specific chemical group from amino acids. This removed group then enters a separate cycle for detoxification and excretion. This chemical group is:",
+        options: [
+            "Carboxyl group",
+            "Methyl group",
+            "Amino group",
+            "Hydroxyl group"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that amino acids undergo deamination, which is the removal of the amino group, and this group becomes ammonia (NH3) entering the urea cycle."
+    },
+    {
+        question: "In the initial energy-investment phase of glycolysis, a hexose sugar is phosphorylated twice, consuming two ATP molecules. The splitting of the resulting bisphosphate compound leads to the formation of two distinct three-carbon isomers. Which of these isomers must undergo a further transformation to proceed through the remainder of glycolysis?",
+        options: [
+            "Glyceraldehyde 3-phosphate (G3P)",
+            "Fructose-1,6-bisphosphate",
+            "Dihydroxyacetone phosphate",
+            "Glucose-6-phosphate"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that Fructose-1,6-bisphosphate splits into G3P and Dihydroxyacetone phosphate, and Dihydroxyacetone phosphate then isomerizes to G3P to continue the pathway."
+    },
+    {
+        question: "The active transport of pyruvate from the cytosol into the mitochondrion is a prerequisite for subsequent aerobic respiration stages. This movement enables pyruvate to undergo which immediate transformation, linking glycolysis to the Krebs cycle?",
+        options: [
+            "Direct entry into the Krebs cycle",
+            "Oxidation into acetyl-CoA",
+            "Conversion to lactic acid",
+            "Further phosphorylation"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory that after active transport of pyruvate from the cytosol into the mitochondrion, it undergoes oxidation to form Acetyl-CoA in the link reaction."
+    },
+    {
+        question: "A cell operating under strict anaerobic conditions relies exclusively on glycolysis for ATP generation. The two net ATP molecules produced per glucose molecule in this scenario are synthesized by which specific mechanism?",
+        options: [
+            "Chemiosmosis",
+            "Oxidative phosphorylation",
+            "Substrate-level phosphorylation",
+            "Proton motive force"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that anaerobic respiration (fermentation) produces only 2 ATP, which come from glycolysis, and ATP in glycolysis is produced via substrate-level phosphorylation."
+    },
+    {
+        question: "In the Krebs cycle, the formation of ATP (or GTP) occurs directly from the cleavage of a high-energy thioester bond. This specific reaction involves the conversion of a four-carbon CoA-bound intermediate to a free four-carbon dicarboxylic acid. The intermediate from which ATP is directly formed is:",
+        options: [
+            "Alpha-ketoglutarate",
+            "Succinyl-CoA",
+            "Succinate",
+            "Malate"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory that in the Krebs cycle, Succinyl-CoA is converted to Succinate, liberating CoA and generating 1 GTP (which converts to ATP) via substrate-level phosphorylation."
+    },
+    {
+        question: "The inner mitochondrial membrane houses a complex molecular machinery responsible for synthesizing the vast majority of ATP during aerobic respiration. This machinery harnesses the potential energy stored in a proton gradient to drive the phosphorylation of ADP. The enzyme responsible for this final ATP synthesis is called:",
+        options: [
+            "Cytochrome oxidase",
+            "NADH-dehydrogenase",
+            "Coenzyme Q",
+            "ATP synthetase"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mention in Textbook theory that oxidative phosphorylation, occurring on the inner mitochondrial membrane, synthesizes ATP using ATP synthetase (FoF1 complex) driven by the proton gradient."
+    },
+    {
+        question: "The process of cellular respiration is fundamentally a series of oxidation-reduction reactions. What characteristic change occurs to a molecule when it undergoes oxidation within these metabolic pathways?",
+        options: [
+            "It gains hydrogen atoms",
+            "It gains electrons",
+            "It loses hydrogen atoms",
+            "It becomes more reduced"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that oxidation-reduction in cellular respiration involves the removal/gain of hydrogen atoms. Oxidation specifically involves removal of hydrogen atoms (and electrons)."
+    },
+    {
+        question: "In the event of strenuous physical activity, human muscle cells may shift their metabolic strategy due to insufficient oxygen. This temporary adaptation allows glycolysis to continue by regenerating NAD+. The two-carbon molecule that is *not* produced during this specific anaerobic pathway in muscle cells is:",
+        options: [
+            "Pyruvate",
+            "Lactic acid",
+            "CO2",
+            "NADH"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that lactic acid fermentation occurs in muscle cells, where pyruvate is converted to lactic acid, regenerating NAD+. CO2 is not released in lactic acid fermentation; it is released in alcoholic fermentation and pyruvate oxidation."
+    },
+    {
+        question: "The primary respiratory fuel for most cells is glucose. However, cells can also derive energy from other macronutrients. What component of fats is directly converted into glyceraldehyde 3-phosphate (G3P) for entry into glycolysis?",
+        options: [
+            "Fatty acids",
+            "Cholesterol",
+            "Glycerol",
+            "Triglycerides"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that fats break down into glycerol and fatty acids, and glycerol is converted to Glyceraldehyde 3-phosphate (G3P), which enters glycolysis."
+    },
+    {
+        question: "The Krebs cycle is also known as the TCA cycle, primarily because its initial stable product features three carboxylic acid groups. This defining characteristic is found in which compound?",
+        options: [
+            "Pyruvate",
+            "Succinate",
+            "Citrate",
+            "Oxaloacetate"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that the Krebs cycle is also known as the Citric Acid Cycle / TCA Cycle, and its key feature is that the first compound formed is citrate (citric acid), which has three carboxylic acid groups."
+    },
+    {
+        question: "Within the Electron Transport Chain, electrons move through a series of complexes, releasing energy. Which of the following complexes is *not* involved in pumping protons (H+) from the mitochondrial matrix to the intermembrane space?",
+        options: [
+            "Complex I (NADH-dehydrogenase)",
+            "Complex II (FADH-dehydrogenase)",
+            "Complex III (Cytochrome reductase)",
+            "Complex IV (Cytochrome oxidase)"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory that protons (H+) are pumped at Complexes I, III, and IV, but not at Complex II (FADH-dehydrogenase complex)."
+    },
+    {
+        question: "The enzyme ATP synthetase is composed of two main parts: a channel protein (Fo) embedded in the membrane and a head-like particle (F1) projecting into the matrix. The flow of protons through which of these components directly drives the synthesis of ATP?",
+        options: [
+            "Fo component",
+            "F1 component",
+            "Intermembrane space",
+            "Mitochondrial matrix"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory that protons flow back into the mitochondrial matrix through ATP synthetase (FoF1 complex), and this flow drives the F1 component to synthesize ATP."
+    },
+    {
+        question: "A key difference between eukaryotic and prokaryotic total ATP yield during aerobic respiration stems from the fate of cytoplasmic NADH. In eukaryotes, the electrons from these NADH molecules are transferred to an internal acceptor in the mitochondria, resulting in a lower energy yield. This internal acceptor is:",
+        options: [
+            "NAD+",
+            "FAD+",
+            "Coenzyme A",
+            "Oxygen"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory that NADH from glycolysis in the cytoplasm (eukaryotes) has its electrons transferred to FAD+ inside the mitochondria, yielding FADH2, which results in 2 ATP instead of 3 ATP."
+    },
+    {
+        question: "During the initial phase of glycolysis, two ATP molecules are consumed to activate the glucose molecule. This 'investment' ensures that the subsequent reactions are exergonic. The first ATP is utilized to phosphorylate glucose, forming which specific intermediate?",
+        options: [
+            "Fructose-6-phosphate",
+            "Glucose-6-phosphate",
+            "Fructose-1,6-bisphosphate",
+            "Glyceraldehyde 3-phosphate"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory that in the preparatory phase, glucose is phosphorylated to Glucose-6-phosphate, consuming 1 ATP."
+    },
+    {
+        question: "The production of ethanol and carbon dioxide from glucose under anaerobic conditions is characteristic of which specific type of fermentation?",
+        options: [
+            "Lactic acid fermentation",
+            "Pyruvate fermentation",
+            "Alcoholic fermentation",
+            "Acetic acid fermentation"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that alcoholic fermentation, which occurs in yeast, produces ethyl alcohol (ethanol) and CO2 from glucose."
+    },
+    {
+        question: "The primary role of fermentation pathways in anaerobic respiration is not to directly generate large amounts of ATP, but rather to ensure the continuous operation of glycolysis. This is achieved by regenerating which crucial electron acceptor molecule?",
+        options: [
+            "ATP",
+            "NADH",
+            "FADH2",
+            "NAD+"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mention in Textbook theory that the primary purpose of anaerobic respiration (fermentation) is to regenerate NAD+ from NADH so glycolysis can continue."
+    },
+    {
+        question: "Considering the overall breakdown of one glucose molecule through aerobic respiration in a eukaryotic cell, what is the total net ATP yield from the glycolytic pathway and the Krebs cycle *via substrate-level phosphorylation only*?",
+        options: [
+            "2 ATP",
+            "4 ATP",
+            "6 ATP",
+            "8 ATP"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory that glycolysis yields a net of 2 ATP via SLP. The Krebs cycle yields 1 ATP (or GTP) per acetyl-CoA, so 2 ATP per glucose. Total SLP ATP = 2 (glycolysis) + 2 (Krebs) = 4 ATP. Ah, the question asks for 'net ATP yield from the glycolytic pathway *and* the Krebs cycle via substrate-level phosphorylation only'. For glycolysis, net 2 ATP, not just the gross. Total is 4 ATP (2 net from glycolysis + 2 from Krebs). Therefore, the correct option is 1 (4 ATP)."
+    },
+    {
+        question: "A toxic waste product, ammonia (NH3), is formed during the deamination of amino acids. This molecule is then processed in the liver to convert it into a less toxic form for excretion. This detoxification process occurs within which metabolic cycle?",
+        options: [
+            "Krebs cycle",
+            "Glycolysis",
+            "Urea cycle",
+            "Cori cycle"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that after deamination, the amino group becomes ammonia (NH3), entering the urea cycle for detoxification."
+    },
+    {
+        question: "The electron transport chain, located on the inner mitochondrial membrane, does not directly produce ATP. Its primary function is to create the electrochemical gradient that powers ATP synthesis. This is achieved by releasing energy from electrons to facilitate which process?",
+        options: [
+            "Substrate-level phosphorylation",
+            "Direct reduction of oxygen",
+            "Pumping of protons",
+            "Hydrolysis of ATP"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that the ETC itself does not directly make ATP but releases energy to pump protons (H+) from the mitochondrial matrix to the intermembrane space, creating a proton gradient."
+    },
+    {
+        question: "In the Krebs cycle, the enzyme-catalyzed hydration of a four-carbon unsaturated dicarboxylic acid leads to the formation of its saturated counterpart. This step precedes the final oxidation that regenerates oxaloacetate. The unsaturated compound that undergoes hydration is:",
+        options: [
+            "Succinate",
+            "Fumarate",
+            "Malate",
+            "Cis-aconitate"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory that in the Krebs cycle, Fumarate (4C) undergoes hydration to Malate (4C)."
+    },
+    {
+        question: "The complete oxidation of glucose in prokaryotes yields a higher ATP total than in eukaryotes. This difference is precisely quantified as a two ATP molecule advantage per glucose. This additional energy specifically comes from the more direct utilization of which molecule generated during glycolysis?",
+        options: [
+            "Pyruvate",
+            "ATP",
+            "NADH",
+            "FADH2"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that prokaryotes produce 38 ATP versus 36 ATP in eukaryotes because the 2 cytoplasmic NADH from glycolysis in prokaryotes yield 3 ATP each (6 total), while in eukaryotes they yield only 2 ATP each (4 total)."
+    },
+    {
+        question: "A cellular process is defined by a series of enzymatic reactions that convert a hexose sugar into two molecules of pyruvate, generating ATP and NADH in the cytosol. This process is commonly known as the EMP pathway, named after its discoverers. This pathway is:",
+        options: [
+            "Krebs cycle",
+            "Pyruvate oxidation",
+            "Glycolysis",
+            "Electron transport chain"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that glycolysis is the breakdown of glucose into two molecules of pyruvate, occurring in the cytoplasm, and is also known as the EMP pathway."
+    },
+    {
+        question: "During the electron transport chain, Coenzyme Q plays a crucial role as a mobile carrier. It accepts electrons from two different complexes and passes them to the cytochrome reductase complex (Complex III). These two initial complexes are:",
+        options: [
+            "Complexes I and IV",
+            "Complexes II and IV",
+            "Complexes I and II",
+            "Complexes III and IV"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that electrons flow from NADH (via Complex I) and FADH2 (via Complex II) to Coenzyme Q, which then transfers them to Complex III."
+    },
+    {
+        question: "The conversion of glucose to fructose-6-phosphate in glycolysis involves two distinct steps: phosphorylation and isomerization. Which molecule is formed directly after the initial phosphorylation of glucose but *before* the isomerization step?",
+        options: [
+            "Fructose-1,6-bisphosphate",
+            "Glucose-6-phosphate",
+            "Glyceraldehyde 3-phosphate",
+            "Dihydroxyacetone phosphate"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory that the first step in glycolysis is Phosphorylation (Glucose to Glucose-6-phosphate), followed by Isomerization (Glucose-6-phosphate to Fructose-6-phosphate). So, Glucose-6-phosphate is formed directly after the initial phosphorylation."
+    },
+    {
+        question: "If a cell is performing aerobic respiration, the two pyruvate molecules generated from a single glucose molecule will ultimately lead to the production of a specific number of acetyl-CoA units. How many acetyl-CoA molecules are formed from one glucose molecule?",
+        options: [
+            "One",
+            "Two",
+            "Three",
+            "Four"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory that per glucose, two pyruvate molecules are formed, and each pyruvate yields one acetyl-CoA in the link reaction, resulting in 2 Acetyl-CoA per glucose."
+    },
+    {
+        question: "The Krebs cycle is a central hub for metabolism, accepting not only carbohydrate derivatives but also intermediates from fat and protein breakdown. Which specific type of molecule, derived from fatty acid oxidation, directly enters the Krebs cycle?",
+        options: [
+            "Glycerol",
+            "Pyruvate",
+            "Acetyl-CoA",
+            "Lactic acid"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that fatty acids are converted to acetyl-CoA, which then enters the Krebs cycle."
+    },
+    {
+        question: "Oxidative phosphorylation is defined as the synthesis of ATP mediated by ATP synthetase, using energy from the oxidation of NADH and FADH2. This entire process takes place at which specific cellular location?",
+        options: [
+            "Cytoplasm",
+            "Mitochondrial matrix",
+            "Outer mitochondrial membrane",
+            "Inner mitochondrial membrane"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mention in Textbook theory that the ETC and oxidative phosphorylation, including ATP synthetase, are located on the inner mitochondrial membrane."
+    },
+    {
+        question: "One of the key distinctions between aerobic and anaerobic respiration lies in their overall efficiency of ATP generation from glucose. Aerobic respiration is characterized by a high ATP yield, which in eukaryotes is typically:",
+        options: [
+            "2 ATP",
+            "4 ATP",
+            "36 ATP",
+            "38 ATP"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that aerobic respiration in eukaryotes releases a large amount of ATP, specifically 36 ATP."
+    },
+    {
+        question: "The cyclical nature of the Krebs cycle ensures the regeneration of its initial four-carbon acceptor molecule. This molecule condenses with acetyl-CoA to form citrate, thereby restarting the cycle. The name of this four-carbon acceptor is:",
+        options: [
+            "Succinate",
+            "Malate",
+            "Oxaloacetate",
+            "Alpha-ketoglutarate"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that the Krebs cycle begins with Acetyl-CoA (2C) combining with Oxaloacetate (4C) to form Citrate, and Oxaloacetate is regenerated at the end of the cycle."
+    },
+    {
+        question: "A cell is observed to convert glucose into two molecules of a three-carbon compound and subsequently to a two-carbon aldehyde, releasing carbon dioxide. This aldehyde is then reduced to an alcohol. This entire sequence of reactions occurs within the cytoplasm and regenerates NAD+. This process is indicative of:",
+        options: [
+            "Lactic acid fermentation",
+            "Pyruvate oxidation",
+            "Alcoholic fermentation",
+            "Aerobic glycolysis"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that alcoholic fermentation involves glycolysis producing pyruvate, followed by decarboxylation of pyruvate to acetaldehyde (a two-carbon aldehyde) and then reduction by NADH to ethanol (an alcohol), releasing CO2 and regenerating NAD+."
+    },
+    {
+        question: "NADH, an electron carrier, contributes its electrons to Complex I (NADH-dehydrogenase) of the electron transport chain. When these electrons eventually reach the final acceptor, what specific molecule is formed?",
+        options: [
+            "Carbon dioxide",
+            "Water",
+            "Oxygen",
+            "ATP"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory that Oxygen (O₂) accepts electrons and hydrogen ions to form water (H₂O) as the final step of the ETC, regardless of whether electrons originated from NADH or FADH2."
+    },
+    {
+        question: "During the preparatory phase of glycolysis, one of the energy-consuming steps involves the phosphorylation of Fructose-6-phosphate. This reaction converts it into a bisphosphate, priming the molecule for cleavage. The resulting molecule is:",
+        options: [
+            "Glucose-6-phosphate",
+            "Fructose-1,6-bisphosphate",
+            "Glyceraldehyde 3-phosphate",
+            "Phosphoenol pyruvate"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory that in the preparatory phase, Fructose-6-phosphate is phosphorylated to Fructose-1,6-bisphosphate."
+    },
+    {
+        question: "The Krebs cycle includes two specific steps where oxidative decarboxylation occurs, meaning both a carbon dioxide molecule is released and an NADH molecule is generated. Which of the following intermediates undergoes such a transformation, leading to a five-carbon product?",
+        options: [
+            "Citrate",
+            "Isocitrate",
+            "Alpha-ketoglutarate",
+            "Succinyl-CoA"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory that Isocitrate (6C) undergoes oxidative decarboxylation to α-Ketoglutarate (5C), producing 1 CO2 and 1 NADH."
+    },
+    {
+        question: "In aerobic respiration, the largest portion of ATP is generated indirectly through the redox reactions of the electron transport chain. For every NADH molecule that enters the ETC, approximately how many ATP molecules are synthesized in eukaryotic cells?",
+        options: [
+            "Two",
+            "Three",
+            "Four",
+            "Six"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory that 1 NADH yields 3 ATP via the ETC in eukaryotes (when considering NADH from mitochondrial matrix). For cytoplasmic NADH from glycolysis, it yields 2 ATP, but the question implies 'entering the ETC' generally. When 1 NADH from the matrix 'enters' the ETC, it gives 3 ATP."
+    },
+    {
+        question: "The Embden, Meyerhof, Parnas (EMP) pathway represents the central sequence of reactions for glucose breakdown. This pathway occurs entirely within which cellular compartment?",
+        options: [
+            "Mitochondrial matrix",
+            "Inner mitochondrial membrane",
+            "Cytoplasm",
+            "Outer mitochondrial membrane"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that glycolysis (EMP pathway) occurs in the cytoplasm (cytosol)."
+    },
+    {
+        question: "A key intermediate in the Krebs cycle, with four carbons, is produced from the direct oxidation of succinyl-CoA, simultaneously generating ATP (or GTP). This intermediate is then further oxidized to fumarate. What is this four-carbon intermediate?",
+        options: [
+            "Alpha-ketoglutarate",
+            "Succinate",
+            "Malate",
+            "Oxaloacetate"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory that Succinyl-CoA is converted to Succinate (4C), generating ATP (or GTP)."
+    },
+    {
+        question: "The proton gradient established across the inner mitochondrial membrane serves as the energetic driving force for ATP synthesis. This gradient is fundamentally dependent on the impermeability of this membrane to free proton diffusion, ensuring that protons only re-enter the matrix via specific channels. These channels are integral parts of:",
+        options: [
+            "Cytochrome c",
+            "Coenzyme Q",
+            "ATP synthetase",
+            "NADH-dehydrogenase complex"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that protons flow back into the mitochondrial matrix through ATP synthetase (FoF1 complex), which acts as a channel protein (Fo)."
+    },
+    {
+        question: "When comparing the total ATP yield from the complete aerobic oxidation of one glucose molecule, prokaryotes typically generate two more ATP molecules than eukaryotes. This specific difference is directly attributable to the higher ATP yield from the NADH produced during which specific pathway?",
+        options: [
+            "Krebs cycle",
+            "Pyruvate oxidation",
+            "Electron Transport Chain",
+            "Glycolysis"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mention in Textbook theory that the difference between prokaryotic (38 ATP) and eukaryotic (36 ATP) yield is due to the 2 cytoplasmic NADH from glycolysis yielding 3 ATP each in prokaryotes versus 2 ATP each in eukaryotes."
+    },
+    {
+        question: "The initial breakdown of glucose, known as glycolysis, is common to both aerobic and anaerobic respiration. This pathway ultimately yields two molecules of a three-carbon compound. What is this universal intermediate?",
+        options: [
+            "Acetyl-CoA",
+            "Lactic acid",
+            "Pyruvate",
+            "Ethanol"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that glycolysis is the initial breakdown of glucose into two molecules of pyruvate, common to both aerobic and anaerobic respiration."
+    },
+    {
+        question: "Which of the following molecules serves as the direct input for the Krebs cycle after pyruvate oxidation, representing the convergence point for carbohydrate, lipid, and protein metabolism?",
+        options: [
+            "Glucose",
+            "Pyruvate",
+            "Acetyl-CoA",
+            "Glyceraldehyde 3-phosphate"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that Acetyl-CoA is formed from pyruvate oxidation and enters the Krebs cycle. Fats are converted to acetyl-CoA and proteins' carbon chains can be converted to acetyl-CoA or Krebs cycle intermediates, making acetyl-CoA a key convergence point."
+    },
+    {
+        question: "Within the Krebs cycle, two molecules of CO2 are released for every acetyl-CoA molecule processed. One of these CO2 molecules is released during the conversion of an alpha-keto acid with five carbons to a succinyl compound. This alpha-keto acid is:",
+        options: [
+            "Isocitrate",
+            "Alpha-ketoglutarate",
+            "Succinate",
+            "Malate"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory that α-Ketoglutarate (5C) undergoes oxidative decarboxylation to Succinyl-CoA (4C), producing 1 CO2 and 1 NADH."
+    },
+    {
+        question: "The term 'oxidation-reduction reactions' is central to cellular respiration. In the context of these reactions, what defines a molecule undergoing reduction?",
+        options: [
+            "Removal of hydrogen atoms",
+            "Gain of oxygen atoms",
+            "Removal of electrons",
+            "Gain of hydrogen atoms"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mention in Textbook theory that oxidation-reduction involves the removal/gain of hydrogen atoms. Reduction, conversely to oxidation, involves the gain of hydrogen atoms (and electrons)."
+    },
+    {
+        question: "A patient experiences muscle fatigue and cramping during intense exercise, likely due to a shift in metabolic pathways. The accumulation of a specific acidic byproduct in muscle cells is characteristic of this anaerobic metabolic state. This byproduct is:",
+        options: [
+            "Ethanol",
+            "Carbon dioxide",
+            "Lactic acid",
+            "Acetyl-CoA"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that lactic acid fermentation occurs in muscle cells during strenuous exercise, causing fatigue due to the accumulation of lactic acid."
+    },
+    {
+        question: "Aerobic respiration in eukaryotes culminates in the production of water as the final step of the electron transport chain. This water is formed when oxygen accepts which two components?",
+        options: [
+            "Electrons and carbon atoms",
+            "Protons and phosphate groups",
+            "Electrons and hydrogen ions",
+            "Oxygen atoms and electrons"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that Oxygen (O₂) accepts electrons and hydrogen ions to form water (H₂O) as the final electron acceptor."
+    },
+    {
+        question: "The energy yield from one FADH2 molecule entering the electron transport chain is slightly less than that from one NADH molecule. This difference arises because FADH2 feeds its electrons into a later complex in the chain. For every FADH2 molecule, approximately how many ATP are synthesized in eukaryotes?",
+        options: [
+            "One",
+            "Two",
+            "Three",
+            "Four"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory that 1 FADH2 yields 2 ATP via the ETC in eukaryotes."
+    },
+    {
+        question: "The discovery of the citric acid cycle is attributed to a Nobel laureate who elucidated this complex series of reactions. This cycle bears his name as an alternative designation. Who is this discoverer?",
+        options: [
+            "Louis Pasteur",
+            "Otto Warburg",
+            "Sir Hans Krebs",
+            "Embden, Meyerhof, Parnas"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that the Krebs Cycle (Citric Acid Cycle) was discovered by Sir Hans Krebs."
+    },
+    {
+        question: "Proteins, when utilized as an energy source, must first be broken down into their monomeric units. These monomers then undergo a specific modification before their carbon skeletons can enter catabolic pathways. These monomeric units are:",
+        options: [
+            "Fatty acids",
+            "Nucleotides",
+            "Amino acids",
+            "Monosaccharides"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that proteins are hydrolyzed into amino acids for energy utilization."
+    },
+    {
+        question: "Substrate-level phosphorylation is distinguished by the direct transfer of a phosphate group from an organic substrate to ADP. In the Krebs cycle, this occurs during the conversion of succinyl-CoA to succinate. The energy for this direct ATP synthesis is derived from:",
+        options: [
+            "A proton motive force",
+            "The oxidation of NADH",
+            "A high-energy thioester bond",
+            "The reduction of FAD+"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that succinyl-CoA to succinate generates GTP (which converts to ATP). This reaction involves the cleavage of a high-energy thioester bond in succinyl-CoA."
+    },
+    {
+        question: "The total theoretical ATP yield in eukaryotes from the complete oxidation of one glucose molecule is 36 ATP. Which component of this total comes specifically from the NADH generated during the Krebs cycle?",
+        options: [
+            "4 ATP",
+            "6 ATP",
+            "18 ATP",
+            "24 ATP"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that per glucose, the Krebs cycle produces 6 NADH, and each NADH yields 3 ATP in eukaryotes, so 6 * 3 = 18 ATP."
+    },
+    {
+        question: "A unique mobile carrier in the electron transport chain, specifically a protein containing iron, acts as an electron shuttle between Complex III and Complex IV. This component is essential for bridging the gap between these two large enzyme complexes. It is:",
+        options: [
+            "Ubiquinone",
+            "Cytochrome c",
+            "Flavin mononucleotide",
+            "Iron-sulfur protein"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory that Cytochrome-c is a mobile, protein with iron, that transfers electrons from Complex III to Complex IV."
+    },
+    {
+        question: "The conversion of 1,3-bisphosphoglycerate to 3-phosphoglycerate in glycolysis involves the direct transfer of a phosphate group to ADP. This is an example of:",
+        options: [
+            "Oxidative phosphorylation",
+            "Chemiosmosis",
+            "Substrate-level phosphorylation",
+            "Photophosphorylation"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that the formation of ATP from 1,3-bisphosphoglycerate to 3-phosphoglycerate is via substrate-level phosphorylation."
+    },
+    {
+        question: "A defining characteristic of aerobic respiration is the complete breakdown of glucose into carbon dioxide and water. This contrasts with anaerobic respiration, where the breakdown is incomplete. The substantial ATP yield of aerobic respiration is due to the full utilization of:",
+        options: [
+            "Only glycolysis",
+            "Only the Krebs cycle",
+            "Glycolysis and fermentation",
+            "Glycolysis, pyruvate oxidation, Krebs cycle, and ETC"
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mention in Textbook theory that aerobic respiration involves the complete breakdown of glucose to CO2 and H2O, yielding a large amount of ATP (36/38), which encompasses glycolysis, pyruvate oxidation, the Krebs cycle, and the electron transport chain with oxidative phosphorylation."
+    },
+    {
+        question: "If a cell is unable to convert pyruvate to acetyl-CoA due to the absence of specific mitochondrial enzymes, but glycolysis is still active, which of the following processes would likely become the primary fate of pyruvate in an otherwise oxygen-rich environment?",
+        options: [
+            "Direct entry into the Krebs cycle",
+            "Oxidative phosphorylation",
+            "Lactic acid or alcoholic fermentation",
+            "Formation of water"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that the link reaction (pyruvate oxidation to acetyl-CoA) occurs in the mitochondrion. If enzymes for this are absent, pyruvate cannot enter the Krebs cycle even with oxygen. Glycolysis would still produce pyruvate, and to regenerate NAD+ for glycolysis to continue, pyruvate would be shunted to fermentation pathways (lactic acid or alcoholic)."
+    },
+    {
+        question: "The splitting of Fructose-1,6-bisphosphate into two three-carbon molecules is a critical step in the preparatory phase of glycolysis. One of these three-carbon molecules is glyceraldehyde 3-phosphate (G3P). The other immediate product is:",
+        options: [
+            "Pyruvate",
+            "Dihydroxyacetone phosphate",
+            "3-phosphoglycerate",
+            "Phosphoenol pyruvate"
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory that Fructose-1,6-bisphosphate splits into G3P and Dihydroxyacetone phosphate."
+    },
+    {
+        question: "The total number of ATP molecules generated via the electron transport chain (oxidative phosphorylation) from the NADH produced during the Krebs cycle, for one glucose molecule in eukaryotes, is:",
+        options: [
+            "6 ATP",
+            "12 ATP",
+            "18 ATP",
+            "24 ATP"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that per glucose, the Krebs cycle produces 6 NADH. In eukaryotes, each NADH yields 3 ATP, so 6 NADH * 3 ATP/NADH = 18 ATP."
+    },
+    {
+        question: "Which of the following describes a key difference in the definition of respiration in living cells?",
+        options: [
+            "All respiration occurs in the presence of oxygen.",
+            "Only glucose can be broken down for energy.",
+            "It is solely a catabolic process with no redox reactions.",
+            "It involves complex oxidation-reduction reactions to obtain energy."
+        ],
+        correctAnswer: 3,
+        reasoning: "It's mention in Textbook theory that cellular respiration is a series of complex oxidation-reduction reactions in living cells to obtain energy from the breakdown of organic matter."
+    },
+    {
+        question: "The electron transport chain complexes utilize the energy of electron flow to establish a proton gradient. This gradient represents a form of potential energy, which is subsequently converted into chemical energy in the form of ATP. This conversion process is known as:",
+        options: [
+            "Substrate-level phosphorylation",
+            "Dehydrogenation",
+            "Chemiosmosis",
+            "Decarboxylation"
+        ],
+        correctAnswer: 2,
+        reasoning: "It's mention in Textbook theory that oxidative phosphorylation, the synthesis of ATP using the proton gradient, is mediated by chemiosmosis, which refers to the coupling of proton movement to ATP synthesis."
+    },
+    {
+        question: "If a cell is unable to carry out the Krebs cycle, but has functional glycolysis and ETC, which of the following would be true regarding its ATP production?",
+        options: [
+            "It would produce 36 ATP per glucose.",
+            "It would rely heavily on anaerobic respiration pathways.",
+            "It would still produce significant ATP from the ETC alone.",
+            "NADH and FADH2 production would be maximized."
+        ],
+        correctAnswer: 1,
+        reasoning: "It's mention in Textbook theory that the Krebs cycle is a major source of NADH and FADH2 (6 NADH, 2 FADH2 per glucose), contributing 18 ATP and 4 ATP respectively via ETC. Without the Krebs cycle, the majority of ATP from oxidative phosphorylation would be lost, making the cell rely on other pathways (like anaerobic respiration) to meet energy demands, even if the ETC itself is functional. So the answer is that it would rely heavily on anaerobic respiration pathways, as glycolysis would be the main source of ATP."
+    }
+];
+
+// Constants
+const QUIZ_ACCESS_CODE = "PreMium-A-12345";
+const DEV_ACCESS_CODE = "Dev-PDA-001";
+const ACADEMY_NAME = "WHITE COAT WORRIORS ";
+const QUIZ_SUBJECT = "Biology ";
+const WEBSITE_LINK = "https://premiumdoctoracademy.com";
+const WHATSAPP_CONTACT = "03287743851";
+const WHATSAPP_COMMUNITY = "https://whatsapp.com/channel/0029VaFCIU6EquiOlXWcNR1X";
+const TIME_PER_MCQ = 60;
+const MARK_PER_MCQ = 1;
+const NEGATIVE_MARKING = 0;
+
+// Global state variables
+let currentQuizId = 'WCW-BIO-0014';
+let quizData = quizData_WCW_BIO_0014;
+let currentQuestion = 0;
+let userAnswers = Array(quizData.length).fill(null);
+let timeLeft;
+let questionTimeLeft;
+let totalTimeInterval;
+let questionTimeInterval;
+let studentData = {};
+let studentAccessCode = "";
+
+// DOM elements
+const questionNavEl = document.getElementById('question-nav');
+const questionTextEl = document.getElementById('question-text');
+const optionsContainerEl = document.getElementById('options-container');
+const reasoningEl = document.getElementById('reasoning');
+const reasoningTextEl = document.getElementById('reasoning-text');
+const quizTitleEl = document.getElementById('quiz-title');
+const quizSubjectEl = document.getElementById('quiz-subject');
+const perMcqTimeEl = document.getElementById('per-mcq-time');
+const totalTimerEl = document.getElementById('timer');
+const questionTimerEl = document.getElementById('question-timer');
+const quizProgressEl = document.getElementById('quiz-progress');
+const studentInfoTable = document.getElementById('student-info-table');
+const quizResultsTable = document.getElementById('quiz-results-table');
+const allMcqsList = document.getElementById('all-mcqs-list');
+const devPasswordInput = document.getElementById('developerPassword');
+const devErrorBox = document.getElementById('dev-error-box');
+const quizAccessCodeInput = document.getElementById('quizAccessCode');
+const quizAccessErrorBox = document.getElementById('quiz-error-box');
+const toggleDevPasswordIcon = document.getElementById('toggleDeveloperPassword');
+const toggleQuizCodeIcon = document.getElementById('toggleQuizAccessCode');
+const websiteLinkEl = document.getElementById('website-link');
+const whatsappContactLinkEl = document.getElementById('whatsapp-contact-link');
+const whatsappCommunityLinkEl = document.getElementById('whatsapp-community-link');
+const reasoningBtn = document.getElementById('reasoning-btn');
+const quizNotificationEl = document.getElementById('quiz-notification');
+const notificationTitleEl = document.getElementById('notification-title');
+const notificationMessageEl = document.getElementById('notification-message');
+const notificationYesBtn = document.getElementById('notification-yes');
+const notificationNoBtn = document.getElementById('notification-no');
+const correctCountEl = document.getElementById('correct-count');
+const incorrectCountEl = document.getElementById('incorrect-count');
+const unansweredCountEl = document.getElementById('unanswered-count');
+const performanceFillEl = document.getElementById('performance-fill');
+
+
+/**
+ * @description Sends data to the Google Apps Script endpoint.
+ * @param {object} data - The payload containing type ('registration' or 'quiz_result') and data.
+ */
+function sendDataToSheet(data) {
+    if (!SHEET_SCRIPT_URL || SHEET_SCRIPT_URL.includes('YOUR_DEPLOYED_WEB_APP_URL')) {
+        console.error('SHEET_SCRIPT_URL is not configured. Data not sent to Google Sheet.');
+        return Promise.resolve({ success: false, message: 'Script URL not configured.' });
+    }
+
+    return fetch(SHEET_SCRIPT_URL, {
+        method: 'POST',
+        // 'no-cors' is necessary for Apps Script to accept cross-origin POST requests from a web page
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        // Cannot read response body with 'no-cors', assume request was sent successfully
+        return { success: true, message: 'Request sent to Google Script.' };
+    })
+    .catch(error => {
+        console.error('Sheet Data Send Error:', error);
+        return { success: false, message: 'Failed to send request to Google Script.' };
+    });
+}
+
+
+// Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    const storedStudentData = localStorage.getItem('studentData');
+    if (storedStudentData) {
+        studentData = JSON.parse(storedStudentData);
+        document.getElementById('studentName').value = studentData['Student Name'] || '';
+        document.getElementById('fatherName').value = studentData['Father Name'] || '';
+        document.getElementById('email').value = studentData['Email'] || '';
+        document.getElementById('mobile').value = studentData['Mobile'] || '';
+        document.getElementById('city').value = studentData['City'] || '';
+    }
+    const storedCode = localStorage.getItem('studentAccessCode');
+    if (storedCode) {
+        studentAccessCode = storedCode;
+    }
+    
+    showPage('signin-page');
+    
+    if (toggleDevPasswordIcon) toggleDevPasswordIcon.addEventListener('click', () => togglePasswordVisibility('developerPassword', 'toggleDeveloperPassword'));
+    if (toggleQuizCodeIcon) toggleQuizCodeIcon.addEventListener('click', () => togglePasswordVisibility('quizAccessCode', 'toggleQuizAccessCode'));
+});
+
+function showQuizNotification(title, message, type = 'info') {
+    const allowedNotifications = ['Registration Successful', 'Access Granted', 
+                                 'Quiz Completed!', 'Quiz Reset', 'Registration Error', 'Submission Error', 'Registration Warning'];
+    
+    if (!allowedNotifications.includes(title)) {
+        return;
+    }
+    
+    notificationTitleEl.textContent = title;
+    notificationMessageEl.textContent = message;
+    
+    quizNotificationEl.classList.remove('warning', 'error');
+    
+    if (type === 'warning') {
+        quizNotificationEl.classList.add('warning');
+    } else if (type === 'error') {
+        quizNotificationEl.classList.add('error');
+    }
+    
+    quizNotificationEl.classList.add('show');
+    
+    setTimeout(() => {
+        if (quizNotificationEl.classList.contains('show')) {
+            hideQuizNotification();
+        }
+    }, 5000);
+}
+
+function hideQuizNotification() {
+    quizNotificationEl.classList.remove('show');
+}
+
+function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    document.querySelectorAll('.error-box, .success-box').forEach(el => el.style.display = 'none');
+}
+
+function togglePasswordVisibility(inputID, iconID) {
+    const passwordInput = document.getElementById(inputID);
+    const toggleIcon = document.getElementById(iconID);
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+    }
+}
+
+function showQuizAccessForm() {
+    document.getElementById('quiz-access-form').style.display = 'flex';
+    document.getElementById('developer-access-form').style.display = 'none';
+}
+
+function showDeveloperAccessForm() {
+    document.getElementById('developer-access-form').style.display = 'flex';
+    document.getElementById('quiz-access-form').style.display = 'none';
+}
+
+function showRegistrationPage() {
+    showPage('registration-page');
+}
+
+// Registration Handler
+function generateAccessCode(studentName, fatherName) {
+    const studentInitials = studentName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const fatherInitials = fatherName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const uniqueId = Math.random().toString(36).substring(2, 7).toUpperCase();
+
+    return `${ACADEMY_NAME.replace(/\s+/g, '-')}-${studentInitials}${fatherInitials}-${uniqueId}`;
+}
+
+function handleRegistration() {
+    const sName = document.getElementById('studentName').value.trim();
+    const fName = document.getElementById('fatherName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const city = document.getElementById('city').value.trim();
+    
+    if (!sName || !fName || !email || !mobile || !city) {
+        showQuizNotification('Registration Error', 'Please fill in all the registration details.', 'error');
+        return;
+    }
+    
+    // Generate access code
+    const generatedCode = generateAccessCode(sName, fName);
+    studentAccessCode = generatedCode;
+
+    studentData = {
+        'Student Name': sName,
+        'Father Name': fName,
+        'Email': email,
+        'Mobile': mobile,
+        'City': city
+    };
+
+    // --- NEW: SEND REGISTRATION DATA TO GOOGLE SHEET ---
+    const registrationDataToSend = {
+        type: 'registration',
+        accessCode: generatedCode,
+        studentName: sName,
+        fatherName: fName,
+        email: email,
+        mobile: mobile,
+        city: city
+    };
+    
+    sendDataToSheet(registrationDataToSend)
+        .then(response => {
+            console.log('Sheet Registration Response:', response);
+            showQuizNotification('Registration Successful', `Your code: ${generatedCode}. Data submitted to sheet.`, 'info');
+        })
+        .catch(error => {
+            console.error('Sheet Registration Error:', error);
+            showQuizNotification('Registration Warning', `Registration saved locally, but sheet submission failed.`, 'warning');
+        });
+    // ----------------------------------------------------
+    
+    // Store data locally
+    localStorage.setItem('studentAccessCode', generatedCode);
+    localStorage.setItem('studentData', JSON.stringify(studentData));
+    
+    const registrations = JSON.parse(localStorage.getItem('wcwRegistrations') || '[]');
+    registrations.push({
+        ...studentData,
+        accessCode: generatedCode,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwRegistrations', JSON.stringify(registrations));
+    
+    
+    // Start the quiz after registration
+    startQuiz('WCW-BIO-0014', 'Student', generatedCode);
+}
+
+// Quiz Access Handler
+function checkDeveloperPassword() {
+    devErrorBox.style.display = 'none';
+    if (devPasswordInput.value === DEV_ACCESS_CODE) {
+        showQuizNotification('Access Granted', 'Welcome! You have successfully logged in as a developer.', 'info');
+        startQuiz('WCW-BIO-0014', 'Developer', DEV_ACCESS_CODE);
+    } else {
+        devErrorBox.style.display = 'block';
+    }
+}
+
+function accessQuiz(inputCode) {
+    const errorBox = document.getElementById('quiz-error-box');
+    errorBox.style.display = 'none';
+    
+    const storedStudentCode = localStorage.getItem('studentAccessCode');
+    
+    if (inputCode === QUIZ_ACCESS_CODE || inputCode === DEV_ACCESS_CODE || inputCode === storedStudentCode) {
+        showQuizNotification('Access Granted', 'Welcome! You can now start the quiz.', 'info');
+        startQuiz('WCW-BIO-0014', 'Student', inputCode);
+    } else {
+        errorBox.style.display = 'block';
+    }
+}
+
+function startQuiz(quizId, userType, code) {
+    currentQuizId = quizId;
+    quizData = quizData_WCW_BIO_0014;
+    
+    // Always start fresh - no progress restoration
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    questionTimeLeft = TIME_PER_MCQ;
+    
+    localStorage.setItem('lastAccessCode', code);
+
+    showPage('quiz-page');
+    initQuiz();
+}
+
+// Quiz Logic
+function initQuiz() {
+    quizSubjectEl.textContent = QUIZ_SUBJECT;
+    perMcqTimeEl.textContent = Math.floor(TIME_PER_MCQ / 60);
+    
+    websiteLinkEl.href = WEBSITE_LINK;
+    whatsappContactLinkEl.href = 'https://wa.me/' + WHATSAPP_CONTACT;
+    whatsappCommunityLinkEl.href = WHATSAPP_COMMUNITY;
+    
+    quizTitleEl.textContent = `Test - ID: ${currentQuizId}`;
+    renderQuestionNav();
+    renderQuestion();
+
+    if (totalTimeInterval) clearInterval(totalTimeInterval);
+    if (questionTimeInterval) clearInterval(questionTimeInterval);
+    
+    totalTimeInterval = setInterval(updateTotalTimer, 1000);
+    questionTimeInterval = setInterval(updateQuestionTimer, 1000);
+}
+
+function updateTotalTimer() {
+    if (timeLeft > 0) {
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        totalTimerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    } else {
+        clearInterval(totalTimeInterval);
+        submitTest(true);
+    }
+}
+
+function updateQuestionTimer() {
+    if (questionTimeLeft > 0) {
+        questionTimeLeft--;
+        questionTimerEl.textContent = `${questionTimeLeft}`;
+    } else {
+        questionTimeLeft = TIME_PER_MCQ;
+        navigateQuestion('next');
+    }
+}
+
+function renderQuestionNav() {
+    questionNavEl.innerHTML = '';
+    quizData.forEach((_, index) => {
+        const navItem = document.createElement('div');
+        navItem.classList.add('question-nav-item');
+        navItem.textContent = index + 1;
+        navItem.onclick = () => navigateQuestion(index);
+        
+        if (index === currentQuestion) {
+            navItem.classList.add('current');
+        } else if (userAnswers[index] !== null) {
+            navItem.classList.add('solved');
+        } else if (userAnswers.slice(0, index).some(ans => ans !== null) || index < currentQuestion) {
+             navItem.classList.add('visited');
+        }
+        
+        questionNavEl.appendChild(navItem);
+    });
+    updateProgressBar();
+}
+
+function updateProgressBar() {
+    const solvedCount = userAnswers.filter(answer => answer !== null).length;
+    const progress = (solvedCount / quizData.length) * 100;
+    quizProgressEl.style.width = `${progress}%`;
+}
+
+function renderQuestion() {
+    reasoningEl.style.display = 'none';
+    reasoningBtn.classList.add('disabled');
+    const question = quizData[currentQuestion];
+    questionTextEl.textContent = `${currentQuestion + 1}. ${question.question}`;
+    
+    optionsContainerEl.innerHTML = '';
+    question.options.forEach((option, index) => {
+        const optionEl = document.createElement('div');
+        optionEl.classList.add('option');
+        optionEl.textContent = option;
+        
+        const isAnswered = userAnswers[currentQuestion] !== null;
+
+        if (!isAnswered) {
+            optionEl.onclick = () => selectOption(index);
+        } else {
+            if (index === question.correctAnswer) {
+                optionEl.classList.add('correct');
+            } else if (index === userAnswers[currentQuestion]) {
+                optionEl.classList.add('incorrect');
+            }
+        }
+        
+        if (userAnswers[currentQuestion] === index) {
+            optionEl.classList.add('selected');
+        }
+
+        optionsContainerEl.appendChild(optionEl);
+    });
+    
+    questionTimeLeft = TIME_PER_MCQ;
+    questionTimerEl.textContent = `${questionTimeLeft}`;
+    renderQuestionNav();
+    
+    if (userAnswers[currentQuestion] !== null) {
+        reasoningBtn.classList.remove('disabled');
+    }
+}
+
+function selectOption(optionIndex) {
+    const question = quizData[currentQuestion];
+    userAnswers[currentQuestion] = optionIndex;
+    
+    reasoningBtn.classList.remove('disabled');
+    
+    const options = optionsContainerEl.querySelectorAll('.option');
+    options.forEach((option, index) => {
+        option.onclick = null;
+        option.classList.remove('selected', 'correct', 'incorrect');
+        
+        if (index === question.correctAnswer) {
+            option.classList.add('correct');
+        } else if (index === optionIndex) {
+            option.classList.add('incorrect');
+        }
+        
+        if (index === optionIndex) {
+             option.classList.add('selected');
+        }
+    });
+
+    renderQuestionNav();
+    
+    setTimeout(() => {
+        navigateQuestion('next');
+    }, 800);
+}
+
+function navigateQuestion(direction) {
+    const totalQuestions = quizData.length;
+    let nextIndex;
+
+    if (typeof direction === 'number') {
+        nextIndex = direction;
+    } else if (direction === 'next') {
+        nextIndex = (currentQuestion + 1) % totalQuestions;
+    } else if (direction === 'prev') {
+        nextIndex = (currentQuestion - 1 + totalQuestions) % totalQuestions;
+    } else {
+        return;
+    }
+
+    if (nextIndex === currentQuestion) return;
+    
+    currentQuestion = nextIndex;
+    renderQuestion();
+}
+
+function toggleReasoning() {
+    if (reasoningBtn.classList.contains('disabled')) return;
+    
+    const question = quizData[currentQuestion];
+    if (reasoningEl.style.display === 'block') {
+        reasoningEl.style.display = 'none';
+    } else {
+        reasoningTextEl.textContent = question.reasoning;
+        reasoningEl.style.display = 'block';
+    }
+}
+
+function submitTest(isTimeout = false) {
+    if (!isTimeout && !confirm('Are you sure you want to submit the quiz?')) {
+        return;
+    }
+    
+    clearInterval(totalTimeInterval);
+    clearInterval(questionTimeInterval);
+
+    let correct = 0;
+    let incorrect = 0;
+    let unanswered = 0;
+
+    quizData.forEach((question, index) => {
+        if (userAnswers[index] === null) {
+            unanswered++;
+        } else if (userAnswers[index] === question.correctAnswer) {
+            correct++;
+        } else {
+            incorrect++;
+        }
+    });
+
+    const totalQuestions = quizData.length;
+    const totalScore = (correct * MARK_PER_MCQ) - (incorrect * NEGATIVE_MARKING);
+    const totalMarks = totalQuestions * MARK_PER_MCQ;
+
+    correctCountEl.textContent = correct;
+    incorrectCountEl.textContent = incorrect;
+    unansweredCountEl.textContent = unanswered;
+    
+    const performancePercentage = (correct / totalQuestions) * 100;
+    performanceFillEl.style.width = `${performancePercentage}%`;
+
+    const savedStudentData = JSON.parse(localStorage.getItem('studentData') || '{}');
+    const lastAccessCode = localStorage.getItem('lastAccessCode') || 'N/A';
+    
+    let studentInfoHtml = '';
+    for (const [key, value] of Object.entries(savedStudentData)) {
+        studentInfoHtml += `<tr><td>${key}</td><td>${value}</td></tr>`;
+    }
+    studentInfoHtml += `<tr><td>Access Code Used</td><td>${lastAccessCode}</td></tr>`;
+    studentInfoTable.innerHTML = studentInfoHtml;
+
+    quizResultsTable.innerHTML = `
+        <tr><td>Quiz ID</td><td>${currentQuizId}</td></tr>
+        <tr><td>Total Questions</td><td>${totalQuestions}</td></tr>
+        <tr><td>Correct Answers</td><td>${correct}</td></tr>
+        <tr><td>Incorrect Answers</td><td>${incorrect}</td></tr>
+        <tr><td>Unanswered</td><td>${unanswered}</td></tr>
+        <tr><td>Your Score</td><td>${totalScore} / ${totalMarks}</td></tr>
+    `;
+
+    // --- NEW: SEND QUIZ RESULTS TO GOOGLE SHEET ---
+    if (lastAccessCode && lastAccessCode !== 'N/A') {
+        const resultsDataToSend = {
+            type: 'quiz_result',
+            accessCode: lastAccessCode,
+            quizId: currentQuizId,
+            totalQuestions: totalQuestions,
+            correct: correct,
+            incorrect: incorrect,
+            unanswered: unanswered,
+            totalScore: totalScore,
+            totalMarks: totalMarks,
+            studentName: savedStudentData['Student Name'] || 'Unknown' 
+        };
+
+        sendDataToSheet(resultsDataToSend)
+            .then(response => {
+                console.log('Sheet Results Update Response:', response);
+            })
+            .catch(error => {
+                console.error('Sheet Results Update Error:', error);
+                showQuizNotification('Submission Error', 'Failed to send results to the server sheet.', 'error');
+            });
+    }
+    // ----------------------------------------------------
+
+
+    const results = JSON.parse(localStorage.getItem('wcwQuizResults') || '[]');
+    results.push({
+        studentName: savedStudentData['Student Name'] || 'Unknown',
+        accessCode: lastAccessCode,
+        quizId: currentQuizId,
+        totalQuestions: totalQuestions,
+        correct: correct,
+        incorrect: incorrect,
+        unanswered: unanswered,
+        totalScore: totalScore,
+        totalMarks: totalMarks,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwQuizResults', JSON.stringify(results));
+    
+    showQuizNotification('Quiz Completed!', `Your score: ${totalScore}/${totalMarks}. Check the results page for details.`, 'info');
+    
+    showPage('results-page');
+}
+
+function restartTest() {
+    if (confirm('Are you sure you want to retake the full test? Your current progress will be lost.')) {
+        quizData = quizData_WCW_BIO_0014;
+        currentQuestion = 0;
+        userAnswers = Array(quizData.length).fill(null);
+        timeLeft = quizData.length * TIME_PER_MCQ;
+        
+        showPage('quiz-page');
+        initQuiz();
+    }
+}
+
+function retakeIncorrect() {
+    const incorrectIndices = quizData.map((question, index) => {
+        const isIncorrect = userAnswers[index] !== null && 
+                            userAnswers[index] !== question.correctAnswer;
+        return isIncorrect ? index : -1;
+    }).filter(index => index !== -1);
+    
+    if (incorrectIndices.length === 0) {
+        showQuizNotification('No Incorrect Questions', 'You have no incorrect questions to retake!', 'info');
+        return;
+    }
+    
+    quizData = incorrectIndices.map(index => quizData_WCW_BIO_0014[index]);
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    
+    showPage('quiz-page');
+    initQuiz();
+}
+
+function viewAllMcqs() {
+    allMcqsList.innerHTML = '';
+    quizData_WCW_BIO_0014.forEach((question, index) => {
+        const mcqItem = document.createElement('div');
+        mcqItem.classList.add('all-mcq-item');
+        mcqItem.innerHTML = `
+            <div class="question-text">${index + 1}. ${question.question}</div>
+            <div class="all-mcq-options">
+                ${question.options.map((option, optIndex) => `
+                    <div class="all-mcq-option ${optIndex === question.correctAnswer ? 'correct' : ''}">
+                        ${option}
+                    </div>
+                `).join('')}
+            </div>
+            <div class="all-mcq-reasoning">
+                <strong>Reasoning:</strong> ${question.reasoning}
+            </div>
+        `;
+        allMcqsList.appendChild(mcqItem);
+    });
+    showPage('all-mcqs-page');
+}</script>
